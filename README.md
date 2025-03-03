@@ -38,7 +38,7 @@ sentiment-app/
 
 ### Step 2: Install Required Packages
 ```bash
-pip install flask torch numpy gunicorn
+pip install -r requirements.txt
 ```
 
 ### Step 3: run Locally
