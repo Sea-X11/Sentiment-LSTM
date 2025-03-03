@@ -30,7 +30,8 @@ sentiment-app/
 │   └── models/
 │       ├── imdb_sentiment_model.pt  # Your trained model
 │       └── imdb_vocab.pkl           # Your vocabulary
-├── static/                 # Static files (optional)
+├── sentiment-inference-run locally.py                 #  (optional)
+├── trainning-model(you can train by yourself).py                 #  (optional)
 └── templates/
     └── index.html          # Web interface
 ```
