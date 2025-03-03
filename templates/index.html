@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .positive {
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+        }
+        .negative {
+            background-color: #f2dede;
+            border: 1px solid #ebccd1;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Model</h1>
+        
+        <h3>Model Overview:</h3>
+        <p>This application is Sentiment Analysis Model built with <strong>PyTorch</strong>. The model is part of the Artificial Intelligence <strong>(AI)</strong> and <strong>Machine Learning</strong>(ML) fields, specifically focusing on Natural Language Processing (NLP). It analyzes text to determine its sentiment as positive or negative.</p>
+        <p><strong>Data Source:</strong> The model is trained using the <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews" target="_blank">IMDB Dataset of 50K Movie Reviews</a>, which contains movie reviews used for sentiment analysis. This dataset is commonly used for sentiment analysis in the movie domain.</p>
+        
+        <h3>Model Architecture:</h3>
+        <ul>
+            <li>The model is a Long Short-Term Memory (LSTM) neural network.</li>
+            <li>It uses an <strong>embedding layer</strong> to transform words into vector representations.</li>
+            <li>The <strong>LSTM</strong> layer processes the sequential input (the word embeddings).</li>
+            <li>The output from the last time step is passed through a <strong>dropout</strong> and a <strong>fully connected layer</strong>.</li>
+        </ul>
+
+        <h3>Model Prediction Function:</h3>
+        <ul>
+            <li>Text is preprocessed, tokenized, and converted into numerical sequences based on a vocabulary.</li>
+            <li>The sequence is padded and passed through the model to predict sentiment.</li>
+            <li>The result includes the <strong>sentiment</strong> (positive or negative), the <strong>confidence</strong> score, and the <strong>strength</strong> of the prediction (strong, moderate, weak).</li>
+        </ul>
+
+        <p>Enter some text to analyze its sentiment (especially for Movie Reviews):</p>
+
+        <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+        <button onclick="analyzeSentiment()">Analyze</button>
+        
+        <div id="loader" class="loader"></div>
+        
+        <div id="result" aria-live="polite">
+            <h3>Analysis Result:</h3>
+            <p><strong>Sentiment:</strong> <span id="sentiment"></span></p>
+            <p><strong>Confidence:</strong> <span id="confidence"></span></p>
+            <p><strong>Strength:</strong> <span id="strength"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function analyzeSentiment() {
+            const text = document.getElementById('text-input').value.trim();
+            
+            if (text === '') {
+                alert('Please enter some text to analyze');
+                return;
+            }
+            
+            // Show loader
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+            
+            fetch('/api/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: text }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide loader
+                document.getElementById('loader').style.display = 'none';
+                
+                // Show result
+                const resultDiv = document.getElementById('result');
+                resultDiv.style.display = 'block';
+                resultDiv.className = data.sentiment;
+                
+                document.getElementById('sentiment').textContent = data.sentiment.toUpperCase();
+                document.getElementById('confidence').textContent = data.confidence_percent;
+                document.getElementById('strength').textContent = data.strength;
+            })
+            .catch(error => {
+                // Hide loader
+                document.getElementById('loader').style.display = 'none';
+                console.error('Error:', error);
+                alert('An error occurred during analysis');
+            });
+        }
+    </script>
+</body>
+</html>
