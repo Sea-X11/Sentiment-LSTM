@@ -16,3 +16,33 @@ The model in Flask application is a Sentiment Analysis Model built using PyTorch
             <li>The sequence is padded and passed through the model to predict sentiment.</li>
             <li>The result includes the <strong>sentiment</strong> (positive or negative), the <strong>confidence</strong> score, and the <strong>strength</strong> of the prediction (strong, moderate, weak).</li>
         </ul>
+
+# Deployment Guide: Flask Sentiment Analysis App:Setting Up Your Flask Application Locally
+
+This guide walks you through setting up and deploying your sentiment analysis Flask application to cloud platforms.
+
+### Step 1: Organize Your Project Structure
+```
+sentiment-app/
+├── app.py                  # Main Flask application
+├── requirements.txt        # Dependencies
+├── data/
+│   └── models/
+│       ├── imdb_sentiment_model.pt  # Your trained model
+│       └── imdb_vocab.pkl           # Your vocabulary
+├── static/                 # Static files (optional)
+└── templates/
+    └── index.html          # Web interface
+```
+
+### Step 2: Install Required Packages
+```bash
+pip install flask torch numpy gunicorn
+```
+
+### Step 3: run Locally
+```bash
+python app.py
+```
+Visit `http://127.0.0.1:5000` in your browser to test the application.
+
