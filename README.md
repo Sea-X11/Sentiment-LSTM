@@ -17,7 +17,7 @@ The model in Flask application is a Sentiment Analysis Model built using PyTorch
             <li>The result includes the <strong>sentiment</strong> (positive or negative), the <strong>confidence</strong> score, and the <strong>strength</strong> of the prediction (strong, moderate, weak).</li>
         </ul>
 
-# Deployment Guide: Flask Sentiment Analysis App:Setting Up Your Flask Application Locally
+# Deployment Guide:Setting Up Your Flask Application Locally
 
 This guide walks you through setting up and deploying your sentiment analysis Flask application to cloud platforms.
 
