@@ -1,4 +1,4 @@
-# flask-sentiment-LSTM
+# ssentiment-LSTM
 The model in Flask application is a Sentiment Analysis Model built using PyTorch. 
         <h3>Model Overview:</h3>
         <p>This application is Sentiment Analysis Model built with <strong>PyTorch</strong>. The model is part of the Artificial Intelligence <strong>(AI)</strong> and <strong>Machine Learning</strong>(ML) fields, specifically focusing on Natural Language Processing (NLP). It analyzes text to determine its sentiment as positive or negative.</p>
