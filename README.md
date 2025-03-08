@@ -27,8 +27,8 @@ A powerful Sentiment Analysis API built with **FastAPI** and **PyTorch**, utiliz
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/sentiment-analysis-api.git
-   cd sentiment-analysis-api
+   git clone https://github.com/Sea-X11/Sentiment-LSTM.git
+   cd Sentiment-LSTM
    ```
 
 2. **Set Up a Virtual Environment** (optional but recommended):
@@ -110,8 +110,8 @@ sentiment-analysis-api/
 ├── imdb_vocab.pkl       # Vocabulary file 
 └── README.md            # This file
 ├── requirements.txt        # Dependencies
-├── sentiment-inference-run locally.py                 #  (optional)
-├── trainning-model(you can train by yourself).py      #  (optional)
+├── sentiment-inference-run locally.py                 #  easy run locally  (optional)
+├── trainning-model  (you can train by yourself).py    #  train by yoursel  (optional)
 ```
 
 ## Configuration
