@@ -1,6 +1,6 @@
 # Sentiment Analysis FastAPI Project
 
-A powerful Sentiment Analysis API built with **FastAPI** and **PyTorch**, utilizing a pre-trained LSTM model to predict the sentiment (positive or negative) of text input. This project provides both a web interface and a RESTful API for sentiment prediction, along with an optional CLI mode for local testing.
+A powerful Sentiment Analysis Model built with **FastAPI** and **PyTorch**, utilizing a pre-trained LSTM model to predict the sentiment (positive or negative) of text input. This project provides both a web interface and a RESTful API for sentiment prediction, along with an optional CLI mode for local testing.
 
 ---
 
