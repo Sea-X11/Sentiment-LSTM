@@ -109,9 +109,11 @@ sentiment-analysis-api/
 ├── imdb_sentiment_model.pt  # Pre-trained model 
 ├── imdb_vocab.pkl       # Vocabulary file 
 └── README.md            # This file
+└── render.yaml          # Deploy on render
 ├── requirements.txt        # Dependencies
 ├── sentiment-inference-run locally.py                 #  easy run locally  (optional)
 ├── trainning-model  (you can train by yourself).py    #  train by yoursel  (optional)
+
 ```
 
 ## Configuration
